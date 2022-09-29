@@ -1,6 +1,6 @@
 # PI-03
 Proyecto Individual 3
-##### Criptomonedas: Alternativa de Inversión a Largo Plazo
+#### Criptomonedas: Alternativa de Inversión a Largo Plazo
 
 Toda cartera de inversión debe estar diversificada, eso es sabido.
 Lo que muchos no se dan cuenta es que en esa "cartera" de todas maneras debe incluirse una -quizás más- criptomonedas.
