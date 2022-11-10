@@ -53,4 +53,6 @@ El contenido se soporta en dos tablas:
 	investigaciones, medición de variables climatológicas, instrumentos de navegación, construcción de piezas, capacita-
 	ción de pilotos, etc, etc.
 # 5.Recomendaciones
-	
+	1. Definir el propósito o uso de la información
+	2. Definir indicadores de acuerdo a los objetivos perseguidos
+	3. Mayor cruce de fuentes de información
