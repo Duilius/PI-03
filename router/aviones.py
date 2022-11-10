@@ -3,8 +3,8 @@ import os
 from typing import Optional, List
 import re
 from unittest import result
-from fastapi import FastAPI, File, Form, UploadFile
-from fastapi import APIRouter, Response, Request, Header, Form
+from fastapi import FastAPI, File, Form, UploadFile, Request, Header
+from fastapi import APIRouter, Response, Form
 from fastapi.responses import HTMLResponse
 from pandas import DataFrame
 from pyparsing import And         #Permite dividir las rutas de la app
@@ -16,8 +16,7 @@ from model.users import users
 #import panel as pn
 from datetime import date
 from fastapi.templating import Jinja2Templates
-from scripts_py.param_files import paramFiles
-from scripts_py.transform_df import get_df
+
 
 volar = FastAPI()
 #carga = APIRouter()
@@ -45,20 +44,21 @@ def root():
 
 
 @volar.get("/dashboard/", response_class=HTMLResponse)
-def root(request:Request, hx_request:Optional[str] = Header(None) ):    
-    
-    #if hx_request:
-        with engine.connect() as conn:
+async def root(request:Request, hx_request:Optional[str] = Header(None) ):    
+    with engine.connect() as conn:
         
-            total_sumas= "SELECT sum(tot_people) as tot_pers, sum(tot_pass) as tot_pas, sum(tot_crew) as tot_crew, sum(tot_fat) as tot_fat, sum(pass_fat) as pas_fat, sum(crew_fat) as cre_fat FROM accidents "
-            result_tipo_operador= "SELECT type_oper, count(type_oper) as tot_acc_operador FROM accidents group by type_oper "
+        total_sumas= "SELECT sum(tot_people) as tot_pers, sum(tot_pass) as tot_pas, sum(tot_crew) as tot_crew, sum(tot_fat) as tot_fat, sum(pass_fat) as pas_fat, sum(crew_fat) as cre_fat FROM accidents "
+        result_tipo_operador= "SELECT type_oper, count(type_oper) as tot_acc_operador FROM accidents group by type_oper "
 
-            resulta = conn.execute(total_sumas).fetchall()
-            tipo_operador = conn.execute(result_tipo_operador).fetchall()
+        resulta = conn.execute(total_sumas).fetchall()
+        tipo_operador = conn.execute(result_tipo_operador).fetchall()
+
+    context = {'request':request,'suma_todo':resulta, 'tot_acc_operador':tipo_operador }
+    if hx_request:
+        
+        return templates.TemplateResponse("estadisticas.html",context)
     
-        return templates.TemplateResponse("dashboard.html", {'request':request, 'suma_todo':resulta, 'tot_acc_operador':tipo_operador})
-    
-    #return templates.TemplateResponse("dashboard.html", {'request':request})
+    return templates.TemplateResponse("dashboard.html", context)
 
 
 @volar.get("/dataframes/")
