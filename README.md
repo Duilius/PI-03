@@ -18,7 +18,7 @@ El contenido se soporta en dos tablas:
 	Hemos solucionado el problema de formato en campo fecha y eliminado carácteres extraños
 	en la mayoría de las celdas.
 	Esta tabla contiene la información proporcionada y con muy pocas transformaciones.
-	date_acc: se formateó para ofrecerlo como yyyy-mm-dd
+	date_acc: se formateó para ofrecerla como yyyy-mm-dd
 	operator: se extrajó información acerca de si el operador es Comercial, Militar o Privado.
 	type_oper: indica "Tipo de Operador" (Comercial, Militar o Privado)
 	time_acc: debiera indicar la hora del accidente, pero la información no es confiable; se eliminó.
