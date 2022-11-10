@@ -1,5 +1,10 @@
-### INFORME TÉCNICO
+# INFORME TÉCNICO
 
+Luego del Informe Ejecutivo es necesario destacar los aspectos técnicos considerados los maś adecuados para
+abordar el anñalisis solicitado.
+Las tecnologías elegidas obedecen y/o tienen como prioridad la mejor Experiencia de Usuario posible.
+
+(https://raw.githubusercontent.com/Duilius/PI-03/main/COMANDOS-USADOS.jpg)
 
 
 BACKEND		Python, Pandas, FastAPI, Uvicorn, SQLAlchemy, MySQL
