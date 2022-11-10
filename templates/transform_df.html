@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- libraries -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@holoviz/panel@0.13.0/dist/panel.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+
+    <!-- S E M A N T I C - U I -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+	
+	<title>Transform HOJA1-XLSX</title>
+
+<py-env>
+- panel==0.13.1a2
+- asyncio
+- chardet	
+- bokeh
+- pandas
+</py-env>	
+
+</head>
+<body style="background: #222; color:antiquewhite">
+
+  <div class="ui attached stackable menu">
+    <div class="ui container">
+      <a class="item">
+        <i class="home icon"></i> <div id="inputFile"></div>
+      </a>
+      <a class="item">
+        <i class="grid layout icon"></i> <div id="uploadButton"></div>
+      </a>
+    </div>
+  </div>
+
+  
+  <div id="df_Panel" class="ui container fluid"> </div>
+  
+
+  
+  <div class="ui container fluid">
+    <div class="row">
+      <h3>row 3</h3>
+    </div>
+    <div class="row">
+      <h3>row 4</h3>
+    </div>
+  </div>
+
+
+
+
+<py-list id="myList">      </py-list>
+
+
+<py-script>
+import pandas as pd
+import panel as pn
+pn.extension()
+from panel.io.pyodide import show
+from panel import pane
+from bokeh.models import widgets
+import asyncio
+import chardet
+import csv
+import re
+import os
+from os.path import isfile, join
+from datetime import date
+import js
+
+#file_name = document.getElementById('df_oculto').value
+
+ruta = r"C:\pyscript\venvM3\data2"
+
+inputFile = pn.widgets.FileInput(accept='.csv, .txt, .xls, .xlsx, .json, .parquet')
+
+uploadButton = pn.widgets.Button(name='Archivo Local', button_type = 'primary')
+
+
+df = pn.widgets.Tabulator(pagination='remote', page_size=30)
+def process_file_local(event):
+    
+    if inputFile.value is not None:
+      archivo = inputFile.filename
+      la_ruta = inputFile.value
+        
+      if archivo.endswith('json'):
+        #decoded = b64decode(la_ruta)
+        #f = io.BytesIO(decoded)
+        
+        df.value = pd.read_json(io.BytesIO(inputFile.value))
+        
+      if archivo.endswith('txt'):
+        #separ = get_Separador(archivo)
+        df.max_width=900
+        df.loading=True
+        df.frozen_columns=[0,1,2]
+        df.fit_columns=True
+        df.value = pd.read_csv(io.BytesIO(inputFile.value), sep='|')
+
+      if archivo.endswith('csv'):
+        #separ = get_Separador(archivo)
+        df.max_width=900
+        df.loading=True
+        df.frozen_columns=[0,1,2,3]
+        df.fit_columns=True
+        df.value = pd.read_csv(io.BytesIO(inputFile.value), sep=',')
+    
+      if archivo.endswith('parquet'):
+        df.value = pd.read_csv(io.BytesIO(inputFile.value), engine='pyarrow')
+    
+      if archivo.endswith('xlsx'):
+        fecha1   =   archivo.split(".")[0].split("_")[2]
+        fecha2   =   archivo.split(".")[0].split("_")[3]
+        hoja1    =   "precios_"+ fecha1 +"_"+fecha1
+        hoja2    =   "precios_"+ fecha2 +"_"+fecha2
+
+        #df.value = pd.read_excel(io.BytesIO(inputFile.value), sheet_name='')
+      
+      #document.getElementById('table').style.display = 'block'
+      #document.getElementById('yo').style.color = 'red'
+      #document.getElementById('yo').value= archivo
+
+
+uploadButton.on_click(process_file_local)      
+
+await show(df, 'df_Panel')
+await show(inputFile, 'inputFile')
+await show(uploadButton, 'uploadButton')
+
+
+
+</py-script>
+
+</body>
+</html>

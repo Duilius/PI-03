@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- H T M X-->  
+    <script type="text/javascript" src="c:/utils/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <!-- S E M A N T I C - U I -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+
+	<title>DataFrames-Precios</title>
+</head>
+<body style="background: #222; padding-left: 10px; padding-right: 10px;">
+
+<div class="ui fluid container" id="div1">
+
+  <div class="ui huge breadcrumb" style="padding-top: 20px;">
+    <a class="section">Home</a>
+    <i class="right chevron icon divider"></i>
+    <a class="section" hre="">Registration</a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">Personal Information</div>
+  </div>
+
+  <h2 class="ui header white">
+    <i class="settings icon" style="color:white;"></i>
+    <div class="content" style="color:orange;">Información General <div class="sub header" style="color:floralwhite;">Gestiona los Data Frames antes de <br>convertirlos en Tablas o filas de tablas.</div>
+    </div>
+  </h2>
+<table class="ui red table">
+  <thead>
+    <tr><th>Icono</th>
+    <th>Archivo</th>
+    <th>Formato</th>
+    <th>Nº Columnas</th>
+    <th>Nº Filas</th>
+    <th><i class="hand point down icon"></i></th>
+  </tr></thead><tbody>
+    <tr>
+      <td>Manzanas</td>
+      <td>200</td>
+      <td>0g</td>
+      <td>0g</td>
+      <td>0g</td>
+      <td>
+          <!-- Botón File UpLoad -->
+           <form id='form' hx-encoding='multipart/form-data' action="/uploadfiles/" method="post" >
+            <input type='file' name='file' id="los_files" multiple hx-target='#tbody' hx-swap='beforeend' hx-post="{{ uploadfiles }}">
+            <button>
+                Adicionar
+            </button>
+            <progress id='progress' value='0' max='100' style="background-color: red;"></progress>
+            <input type="text" id="itt" value="{{ los_files }}" size="120">
+          </form>
+          <script>
+              htmx.on('#form', 'htmx:xhr:progress', function(evt) {
+                htmx.find('#progress').setAttribute('value', (evt.detail.loaded/evt.detail.total) * 100)
+                los_files = htmx.find('#los_files').files
+                num_files = los_files.length
+
+                alert("Nº Archivos : " + num_files)
+                alert(" ===> " + los_files[0].name + "***"+los_files[1].name+ "***"+los_files[2].type)
+              });
+          </script>
+
+     </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="ui green table">
+  <thead>
+    <tr><th>Icono</th>
+    <th>Archivo</th>
+    <th>Formato</th>
+    <th>Fecha</th>
+    <th>Encoding</th>
+    <th>Separador</th>
+    <th>Nº Columnas</th>
+    <th>Nº Filas</th>
+    <th>Tamaño Archivo</th>
+    <th><i class="hand point down icon"></i></th>
+  </tr></thead>
+  <tbody id="tbody">
+    {% include 'tbody-data-frames.html' %}
+  </tbody>
+</table>
+
+<h4 class="ui horizontal divider header" style="color:orange"> Análisis del DataFrame </h4>
+
+<div class="ui fluid container inverted" id="div2">
+   <h2 class="ui header">
+      <i class="bar chart icon inverted" style="font-size: 0.75em;"></i>
+      <div class="content" style="color:white;">DataFrame <div class="sub header" style="color:snow;">Mira nuestra tienda de complementos</div>
+      </div>
+  </h2>
+    
+</div> <!-- fin ·div2 -->
+
+<hr>
+
+<!-- <iframe src="/uploadfiles/" width="80%"></iframe> -->
+
+</div> <!-- fin ·div1 -->
+            
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- H T M X-->  
+    <script type="text/javascript" src="c:/utils/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <!-- S E M A N T I C - U I -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+<style type="text/css">
+  .icon{font-size: 2.55em;}
+</style>
+
+
+  <title>Dashboard Fatal Accidents</title>
+</head>
+<body>
+
+<div class="ui attached stackable menu">
+  <div class="ui container">
+    <a class="item" id="mensaje1">
+      <image src="./ProfeDduilio-25.png" style="font-size: 1.45em;"> MENSAJE 1
+    </a>
+    <a class="item" id="mensaje2">
+      <i class="plane icon"style="font-size: 3.5em; color:cornflowerblue;"></i> MENSAJE 2
+    </a>
+    <a class="item" id="mensaje3">
+      <i class="hashtag icon"style="font-size: 3.5em; color:yellowgreen;"></i> MENSAJE 3
+    </a>
+    <a class="item">
+      <i class="money bill alternate icon"style="font-size: 3.5em; color:seagreen;"></i> MENSAJE 4
+    </a>
+    <a class="item">
+      <i class="plus icon"style="font-size: 3.5em; color:gainsboro;"></i> MENSAJE 5
+    </a>            
+    <div class="ui simple dropdown item">
+      More
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item"><i class="edit icon"></i> Edit Profile</a>
+        <a class="item"><i class="globe icon"></i> Choose Language</a>
+        <a class="item"><i class="settings icon"></i> Account Settings</a>
+      </div>
+    </div>
+    <div class="right item">
+      <div class="ui input"><input type="text" placeholder="Search..."></div>
+    </div>
+  </div>
+</div><!-- Fin MENU CABEZERA -->
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="ui container fluid">
+
+
+<!-- INICIO GRILLA -->
+<div class="ui internally celled grid">
+  <div class="row">
+    <div class="three wide column"><!-- CELDA 1 <h3>aaaaa</h3> -->
+      
+    </div>
+    <div class="ten wide column" style="text-align: center;"><!-- CELDA 2bbbbbbbbbbbbb-->
+      <img src="logo-icao-oaci.jpg" style="margin:0px auto;">
+    </div>
+    <div class="three wide column"><!-- CELDA 3  <h3>ccccccccc</h3> -->
+                          <div class="ui vertical menu">
+                            <a class="active teal item" id="estadisticas"  hx-target='#tabla_estad' hx-swap='innerHTML' hx-get="/dashboard">Estadísticas <div class="ui teal left pointing label">1</div></a>
+
+
+                            <a class="item">Accidentes: por qué? <div class="ui label">2</div></a>
+                            <a class="item">Motivos por década<div class="ui label">3</div></a>
+                            <a class="item">Probabilidades de ....<div class="ui label">4</div></a>
+                            <a class="item">Tasa Sobrevivientes<div class="ui label">5</div></a>
+                          </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three wide column"><!-- CELDA 4 <h3>dddddddddd</h3> -->
+                <div class="ui vertical steps" style="position: relative; top:320px">
+                  <div class="completed step">
+                    <i class="truck icon"></i>
+                    <div class="content">
+                      <div class="title">Envío</div>
+                      <div class="description">Elige un método de envío</div>
+                    </div>
+                  </div>
+                  <div class="completed step">
+                    <i class="credit card icon"></i>
+                    <div class="content">
+                      <div class="title">Pago</div>
+                      <div class="description">Introduce la información de pago</div>
+                    </div>
+                  </div>
+                  <div class="active step">
+                    <i class="info icon"></i>
+                    <div class="content">
+                      <div class="title">Confirmar pedido</div>
+                      <div class="description">Verifica los detalles del pedido</div>
+                    </div>
+                  </div>
+                </div>
+    </div>
+    <div class="ten wide column" style="height:540px;" id="vitrina"><!-- CELDA 5 <p>eeeeeeeeee</p>  -->
+                  <!-- inicio ESTADISTICAS -->
+                  <!-- {% include 'estadisticas.html' %} -->
+                  <table class="ui definition table" id='tabla_estad'>
+                      <thead>
+                        <tr><th></th>
+                        <th>Total Personas</th>
+                        <th>Tripulantes</th>
+                        <th>Pasajeros</th>
+                      </tr></thead>
+                      <tbody>
+                        <tr>
+                          <td>Ocupantes en #</td>
+                          <td>{{ suma_todo[0][0] }}</td>
+                          <td>{{ suma_todo[0][1] }}</td>
+                          <td>{{ suma_todo[0][2] }}</td>
+                        </tr>
+                        <tr>
+                          <td>Ocupantes en %</td>
+                          <td>100%</td>
+                          <td>82%</td>
+                          <td>14%</td>
+                        </tr>
+
+
+                        <tr>
+                          <td>Víctimas en #</td>
+                          <td>{{ suma_todo[0][3] }}</td>
+                          <td>{{ suma_todo[0][4] }}</td>
+                          <td>{{ suma_todo[0][5] }}</td>
+                        </tr>
+                        <tr>
+                          <td>Víctimas en %</td>
+                          <td>100%</td>
+                          <td>81%</td>
+                          <td>15%</td>
+                        </tr>
+                    </tbody>
+                  </table><!--  FIN ESTADISTICAS -->
+    </div>
+    <div class="three wide column"><!-- inicio menu vertical -->
+        <p>fffffff</p>
+    </div><!-- Fin menu vertical -->
+  </div>
+</div><!-- FIN GRILLA -->
+
+<hr>
+
+
+<!-- MENU PIE - PAGINA-->
+<div class="ui attached stackable menu">
+  <div class="ui container">
+    <a class="item">
+      <image src="profeduilio-25.png" style="font-size: 1.45em;"> MENSAJE 1
+    </a>
+    <a class="item">
+      <i class="plane icon"style="font-size: 3.5em; color:cornflowerblue;"></i> MENSAJE 2
+    </a>
+    <a class="item">
+      <i class="hashtag icon"style="font-size: 3.5em; color:yellowgreen;"></i> MENSAJE 3
+    </a>
+    <a class="item">
+      <i class="money bill alternate icon"style="font-size: 3.5em; color:seagreen;"></i> MENSAJE 4
+    </a>
+    <a class="item">
+      <i class="plus icon"style="font-size: 3.5em; color:gainsboro;"></i> MENSAJE 5
+    </a>            
+    <div class="ui simple dropdown item">
+      More
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item"><i class="edit icon"></i> Edit Profile</a>
+        <a class="item"><i class="globe icon"></i> Choose Language</a>
+        <a class="item"><i class="settings icon"></i> Account Settings</a>
+      </div>
+    </div>
+    <div class="right item">
+      <div class="ui input"><input type="text" placeholder="Search..."></div>
+    </div>
+  </div>
+</div><!-- FIN DEL MENU PIE - PAGINA-->
+
+</div><!-- fin CONTENEDIR PRINCIPAL-->
+
+
+<!--  VENTANAS MODALES -->
+<div class="ui modal" id="modal1">            <!-- MODAL 1-->
+  <i class="close icon"></i>
+  <div class="header">
+    Sobre mí
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="ProfeDuilio.png">
+    </div>
+    <div class="description">
+      <div class="ui header">Duilio C. Restuccia Eslava</div>
+      <p>Ingeniero Economista, entusiasta difusor de las matemáticas y de programación web.<br> Visita <a href="https://www.profeduilio.com" target="_blank">ProfeDuilio.com</a>. <br>Eterno aprendíz de piano y saxo tenor.</p>
+      <p>Bienvenido !</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Empecemos !
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+
+<div class="ui basic modal" id="modal2">              <!-- MODAL 2-->
+  <div class="ui icon header">
+    <i class="plane icon red"></i>
+    HISTORIA DE LA AVIACIÓN
+  </div>
+  <div class="content">
+    <h1>Sabes cómo empezó la Aviación?</h1>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Si
+    </div>
+  </div>
+</div>
+
+
+
+<div class="ui basic modal" id="modal3">                <!-- MODAL 3-->
+  <div class="ui icon header">
+    <i class="hashtag icon cyan"></i>
+    hablan los números ?
+  </div>
+  <div class="content">
+    <h1>Los fríos números !</h1>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      -
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      +
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $('#mensaje1').click(function(){
+    $('#modal1').modal('show')
+;})
+
+    $('#mensaje2').click(function(){
+    $('#modal2').modal('show')
+;})
+
+    $('#mensaje3').click(function(){
+    $('#modal3').modal('show')
+;})    
+</script>
+
+
+</body>
+</html>

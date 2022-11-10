@@ -1,0 +1,33 @@
+<h1>HOLAAAAAA3 {{ num_files }}</h1>
+<input type="text" name="ttt" value="{{num_files}}">
+      {% for file in filenames  %}
+        {% if file.type=='sheet' %}
+    <tr>
+      <td><i class="file excel outline icon green" style="font-size: 1.25em;"></td>
+        {% else %}
+      <td><i class="file alternate icon" style="font-size: 1.25em;"></i></td>  
+        {% endif %}
+      <td>{{ file.name }}</td>
+      <td>{{ file.size }}</td>
+      <td>{{ file.type }}</td>
+      <td>{{ file.name }}</td>
+
+        {% if data[1] == 'sheet' %}
+      <td>&nbsp;</td>
+        {% else %}
+      <td>{{ file.name }}</td>  
+        {% endif %}
+        
+      <td>3</td>
+      <td>{{ file.name }}</td>
+      <td>{{ file.name }}</td>
+      <td> <a class="ui inverted red button" href='/data/{{ data[0] }}' >Transformar</a></td>
+    </tr>
+      
+      {% endfor %}
+
+<script type="text/javascript">
+  
+  document.getElementById("ttt").value=num_files
+
+</script>
