@@ -3,7 +3,7 @@ Proyecto Individual 3
 
 # ACCIDENTES AÉREOS 
 
-## INFORME TÉCNICO
+## INFORME EJECUTIVO
 ![This is an image](https://raw.githubusercontent.com/Duilius/PI-03/7dd88dd794061cdce2c3915ee9b4630d7789d726/IMAGEN-CABEZERA.jpg)
 # 1.Sobre la información proporcionada
 	Hay información suficiente para obtner conclusiones importantes.	
