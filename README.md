@@ -6,9 +6,28 @@ Proyecto Individual 3
 ## INFORME TÉCNICO
 
 # 1.Sobre la información o data proporcionada
-	Hay información suficiente para obtner algunas conclusiones.	
-	Aunque es necesario saber los fines que se persiguen con el informe solicitado.
-
+	Hay información suficiente para obtner conclusiones importantes.	
+	Sin embargo, es necesario saber los fines que se persiguen con el informe solicitado.
+	
+## La Base de Datos a entregar (Fatal_Aircraft)
+Como resultado del trabajo realizado se entrega la Base de Datos denominada "Fatal_Aircraft".
+El contenido se soporta en dos tablas:
+	1. Tabla accidents
+	2. Tabla acc_causes
+### Tabla accidents:
+	Hemos solucionado el problema de formato en campo fecha y eliminado carácteres extraños
+	en la mayoría de las celdas.
+	Esta tabla contiene la información proporcionada y con muy pocas transformaciones.
+	date_acc: se formateó para ofrecerlo como yyyy-mm-dd
+	operator: se extrajó información acerca de si el operador es Comercial, Militar o Privado.
+	type_oper: indica "Tipo de Operador" (Comercial, Militar o Privado)
+	time_acc: debiera indicar la hora del accidente, pero la información no es confiable; se eliminó.
+### Tabla acc_causes:	
+	A fin de enriquecer el análisis se incorpora información respecto de las causas de los accidentes.
+	Se muestra: fecha del accidente, ruta, descripción y tipo de error, básicamente.
+	
+	Las conclusiones o información adicional que se aporta con esta tabla es muy valiosa para, por ejemplo,
+	saber que la causa más común de los accidentes fatales en avión es el "error humano".
 # 2.Información valiosa No presente.
 	Se destacan dos tipos de datos que podrían abonar en un informe de mayor caliad:
 	La hora de los sucesos: por un tema meramente estadístico
