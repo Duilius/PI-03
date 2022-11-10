@@ -1,14 +1,12 @@
 # PI-03
 Proyecto Individual 3
 
-# Criptomonedas: Alternativa de Inversión a Largo Plazo
+# ACCIDENTES AÉREOS 
 
-Toda cartera de inversión debe estar diversificada, eso es sabido.
-Lo que muchos no se dan cuenta es que en esa "cartera" de todas maneras debe incluirse una -quizás más- criptomoneda.
+La historia comienza cuando.....
 
-## Ganan Fuerza
-Aún cuando cada cierto tiempo la variación de precios y/o de margenes de ganancia desaniman a algunos, otros saben que el negocio está en el largo plazo !
-De allí que lsa criptomonedas vienen ganando fuerza: son un buen refugio frente a otros activos financieros en el largo plazo.
+## Cómo empezó?
+----------------------x
 
-## Facilidad para el Análisis
-Una gran ventaja de las criptomonedas frente a otros activos -de cualquier tipo- es que se puede hacer un seguimiento y un análisis en cualquier momento y désde cualquier lugar (con conexión a internet).
+## Quiénes empezaron?
+Fueron los hermanos Write !
