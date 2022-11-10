@@ -7,9 +7,9 @@ Las tecnologías elegidas obedecen y/o tienen como prioridad la mejor Experienci
 ![This is an image](https://raw.githubusercontent.com/Duilius/PI-03/main/COMANDOS-USADOS.jpg)
 
 En resumen, se usó:
-1. BACKEND		    Python, Pandas, FastAPI, Uvicorn, SQLAlchemy, MySQL
-2. MIDDLE-END	    Jinja2
-3. FRONTEND	      HTML, HTMX, Semantic-UI 
+1. BACKEND		====>    Python, Pandas, FastAPI, Uvicorn, SQLAlchemy, MySQL
+2. MIDDLE-END	====>    Jinja2
+3. FRONTEND	  ====>    HTML, HTMX, Semantic-UI 
 
 
 ## ***BackEnd***:
