@@ -38,3 +38,7 @@ Con HTMX y Semantic-UI las páginas HTML pueden ser más amigables e interactiva
 
 El usuario notará como con mucha velocidad y gran atractivo visual podrá obtener la información
 que se le sugiere y necesite.
+
+## INTEGRANDO TECNOLOGÍAS
+### DataScience en la Web !
+![This is an image](https://raw.githubusercontent.com/Duilius/PI-03/main/integracion-tecnologias.jpg)
